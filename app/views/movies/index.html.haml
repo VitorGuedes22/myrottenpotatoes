@@ -17,3 +17,8 @@
 
 
 = link_to 'Add new movie ', new_movie_path
+
+- if flash[:notice]
+  notice.message= flash[:notice]
+- elsif flash[:warning]
+  warning.message= flash[:warning]

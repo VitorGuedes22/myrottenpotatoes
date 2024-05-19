@@ -1,14 +1,47 @@
+
+-# %h2 Create New Movie
+
+-# = form_tag movies_path, method: :post do
+-#   # Label and text field for the movie's title
+-#   = label :movie, :title, 'Title '
+-#   = text_field :movie, :title
+
+-#   # Label and dropdown select for the movie's rating
+-#   = label :movie, :rating, 'Rating '
+-#   = select :movie, :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']
+
+-#   # Label and date selector for the movie's release date
+-#   = label :movie, :release_date, 'Released On '
+-#   = date_select :movie, :release_date
+
+-#   # Submit button to save the new movie
+-#   = submit_tag 'Save Changes'
+
+
+
 %h2 Create New Movie
 
-= form_tag movies_path, method: :post do
+= form_with(model: @movie, local: true) do |form|
+  - if @movie.errors.any?
+    #errors
+      %h2
+        = pluralize(@movie.errors.count, "error")
+        prohibited this movie from being saved:
+      %ul
+        - @movie.errors.full_messages.each do |message|
+          %li= message
 
-  = label :movie, :title, 'Title '
-  = text_field :movie, :title
+  .field
+    = form.label :title
+    = form.text_field :title
 
-  = label :movie, :rating, 'Rating '
-  = select :movie, :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']
+  .field
+    = form.label :rating
+    = form.select :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']
 
-  = label :movie, :release_date, 'Released On '
-  = date_select :movie, :release_date
+  .field
+    = form.label :release_date
+    = form.date_select :release_date
 
-  = submit_tag 'Save Changes'
+  .actions
+    = form.submit 'Save Changes'

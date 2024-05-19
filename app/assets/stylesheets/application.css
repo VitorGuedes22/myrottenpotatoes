@@ -87,3 +87,22 @@ form label {
     font-weight: bold;
     color: maroon;
 }
+
+/* Adicione essas linhas ao arquivo application.css */
+#notice {
+    color: red;
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #f8d7da;
+}
+
+#warning {
+    color: red;
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #f8d7da;
+}
